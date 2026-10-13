@@ -1,0 +1,14 @@
+SELECT id,name,username,email,role,is_active,created_at FROM users ORDER BY id DESC;
+SELECT COUNT(*) AS registered_users FROM users WHERE role='user';
+SELECT * FROM incidents ORDER BY created_at DESC;
+SELECT * FROM incidents WHERE status <> 'Resolved';
+SELECT * FROM volunteers WHERE verification = 'Pending Verification';
+SELECT * FROM verification_history ORDER BY created_at DESC;
+SELECT * FROM assignments ORDER BY created_at DESC;
+SELECT * FROM resources ORDER BY created_at DESC;
+SELECT * FROM tickets WHERE status = 'Open' ORDER BY created_at DESC;
+SELECT * FROM contact_messages ORDER BY created_at DESC;
+SELECT status,COUNT(*) FROM incidents GROUP BY status;
+SELECT status,COUNT(*) FROM tickets GROUP BY status;
+SELECT * FROM assignment_duplicates_review;
+SELECT name, applied_at FROM schema_migrations ORDER BY name;

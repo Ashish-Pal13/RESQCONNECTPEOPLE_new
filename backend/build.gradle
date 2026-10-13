@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.5'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.resqconnect'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.zaxxer:HikariCP'
+    implementation 'org.springframework.security:spring-security-crypto'
+    runtimeOnly 'org.postgresql:postgresql'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+springBoot {
+    mainClass = 'com.resqconnect.ResqConnectApplication'
+}
+
+tasks.named('bootRun') {
+    workingDir = projectDir
+}
+
+def registerTool = { String taskName, String description, List<String> toolArgs ->
+    tasks.register(taskName, JavaExec) {
+        group = 'resqconnect'
+        setDescription(description)
+        classpath = sourceSets.main.runtimeClasspath
+        mainClass = 'com.resqconnect.tools.Tools'
+        args = toolArgs
+        workingDir = projectDir
+    }
+}
+
+registerTool('dbCreate', 'Creates the PostgreSQL database named in DATABASE_URL', ['db-create'])
+registerTool('migrate', 'Applies pending SQL migrations from sql/migrations', ['migrate'])
+registerTool('migrateStatus', 'Lists applied and pending migrations', ['migrate', '--status'])
+registerTool('seed', 'Creates the coordinator and verifier accounts from .env', ['seed'])
+registerTool('seedResetPasswords', 'Resets the coordinator and verifier passwords from .env', ['seed', '--reset-passwords'])

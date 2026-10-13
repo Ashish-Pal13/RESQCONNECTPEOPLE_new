@@ -1,0 +1,45 @@
+:root {
+  --brand-primary: #03591B;
+  --brand-primary-dark: #023D13;
+  --brand-primary-hover: #024A17;
+  --brand-medium: #087A32;
+  --brand-soft: #EAF5ED;
+  --brand-pale: #F3FAF5;
+  --brand-surface: #FFFFFF;
+  --brand-background: #F7FAF8;
+  --brand-text: #182B20;
+  --brand-text-secondary: #64746A;
+  --brand-border: #DAE7DD;
+  --brand-focus: rgba(3, 89, 27, .18);
+  --brand-shadow-sm: 0 1px 2px rgba(2, 61, 19, .05), 0 8px 22px rgba(2, 61, 19, .05);
+  --brand-shadow-md: 0 1px 2px rgba(2, 61, 19, .05), 0 18px 44px rgba(2, 61, 19, .1);
+  --brand-danger: #B42318;
+  --brand-warning: #B54708;
+  --brand-amber: #94620A;
+  --primary: var(--brand-primary);
+  --primary-dark: var(--brand-primary-dark);
+  --primary-hover: var(--brand-primary-hover);
+  --primary-light: var(--brand-soft);
+  --light: var(--brand-soft);
+  --bg: var(--brand-background);
+  --background: var(--brand-background);
+  --surface: var(--brand-surface);
+  --text: var(--brand-text);
+  --text-primary: var(--brand-text);
+  --text-secondary: var(--brand-text-secondary);
+  --muted: var(--brand-text-secondary);
+  --border: var(--brand-border);
+  --white: #FFFFFF;
+  --danger: var(--brand-danger);
+  --success: #187448;
+  --warning: var(--brand-warning);
+}
+
+body { background: var(--brand-background); color: var(--brand-text); }
+
+.badge.green { background: #E3F4E8; color: #0E6A2B; }
+.badge.orange { background: #FFEFDF; color: #A3410A; }
+.badge.gray { background: #EEF1EF; color: #4F5C54; }
+.badge.red { background: #FDECEA; color: #A8231A; }
+.badge.yellow { background: #FFF4D9; color: #85570A; }
+.badge.blue { background: #E8F0FB; color: #24548F; }
